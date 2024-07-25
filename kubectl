@@ -1,0 +1,25 @@
+minikube start
+
+kubectl get nodes
+kubectl get pod
+kubectl get service
+kubectl get svc
+kubectl get deploy
+kubectl get pod --all-namespaces
+kubectl get svc --all-namespaces
+kubectl get namespace
+
+
+kubectl run nginx-pod --image=nginx:latest --port=80
+
+kubectl expose pod nginx-pod --type=NodePort --port=80
+
+minikube service nginx-pod
+
+kubectl delete pod/nginx-pod
+
+kubectl delete svc/nginx-pod
+
+kubectl apply -f nginx-pod.yaml
+
+kubectl apply -f nginx-service.yaml
