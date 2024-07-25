@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        PORT: "3002"
+    ports:
+      - "3001:3002"
+    depends_on:
+      - backend
+  backend:
+    build:
+      context: ./backend
+      args:
+        PORT: "5005"
+    ports:
+      - "3002:5005"
+    environment:
+      PORT: 5005
+
+
