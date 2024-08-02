@@ -27,3 +27,10 @@ kubectl delete svc/nginx-pod
 kubectl apply -f nginx-pod.yaml
 
 kubectl apply -f nginx-service.yaml
+
+
+kubectl get pod -w
+
+minikube tunnel
+
+minikube addons enable metrics-server
