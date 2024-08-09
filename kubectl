@@ -34,3 +34,16 @@ kubectl get pod -w
 minikube tunnel
 
 minikube addons enable metrics-server
+
+kubectl rollout restart deploy/backend-deployment
+
+kubectl describe pod
+
+kubectl set image deployment
+
+
+kubectl set image deployment/backend-deployment  backend-pod=abazuntts/k8s-back
+
+kubectl rollout status deployment
+
+kubectl rollout undo deployment

@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: backend-pod
-          image: abazuntts/k8s-back:latest
+          image: abazuntts/k8s-back:v1
           resources:
             requests:
               memory: "64Mi"
@@ -30,3 +30,18 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: status.podIP
+            - name: NODE_ENV
+              valueFrom:
+                configMapKeyRef:
+                  name: backend-config-map
+                  key: NODE_ENV
+            - name: AUTH_SERVICE_API
+              valueFrom:
+                configMapKeyRef:
+                  name: backend-config-map
+                  key: AUTH_SERVICE_API
+            - name: USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: backed-secret
+                  key: USERNAME

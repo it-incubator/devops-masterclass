@@ -8,8 +8,10 @@ const app = (req, res) => {
 
     // Получаем IP адрес пода из переменной окружения
     const podIP = process.env.MY_POD_IP;
+    const AUTH_SERVICE_API = process.env.AUTH_SERVICE_API || "";
+    const NODE_ENV = process.env.NODE_ENV;
     res.setHeader('Content-Type', 'text/plain');
-    res.end(`Hello, World!\nPod IP: ${podIP}\n`);
+    res.end(`Hello, World!\nPod IP: ${podIP}\nAUTH_SERVICE_API: ${AUTH_SERVICE_API}\nNODE_ENV: ${NODE_ENV}\n`);
 };
 
 let server;
