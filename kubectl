@@ -47,3 +47,7 @@ kubectl set image deployment/backend-deployment  backend-pod=abazuntts/k8s-back
 kubectl rollout status deployment
 
 kubectl rollout undo deployment
+
+kubectl exec -it pod_name -- /bin/bash
+
+kubectl get configmap -n it-incubator

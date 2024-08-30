@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-config-map-file
+data:
+  backend.txt: |
+    Файл конфигурации
+    sdcsdcsdcs
+    sdcsdcsdcsd
+    csdcsdcsdcsdcsc
+    sdcsdcsdc: sdfcdfvdfv
+    sdcsdcs: ['sdfs']

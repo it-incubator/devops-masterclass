@@ -15,7 +15,30 @@ spec:
     spec:
       containers:
         - name: backend-pod
-          image: abazuntts/k8s-back:v1
+          image: abazuntts/backend-express:1
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          readinessProbe:
+              httpGet:
+                path: /ready
+                port: 8080
+              initialDelaySeconds: 20
+              periodSeconds: 5
+          startupProbe:
+              httpGet:
+                path: /startup
+                port: 8080
+              failureThreshold: 6
+              periodSeconds: 10
+          volumeMounts:
+            - name: backend-config-map-file
+              mountPath: /app/backend.txt
+              subPath: backend.txt
+              readOnly: true
           resources:
             requests:
               memory: "64Mi"
@@ -45,3 +68,8 @@ spec:
                 secretKeyRef:
                   name: backed-secret
                   key: USERNAME
+      volumes:
+        - name: backend-config-map-file
+          configMap:
+            optional: true
+            name: backend-config-map-file
