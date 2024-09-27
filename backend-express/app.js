@@ -5,6 +5,14 @@ const app = express();
 let isAppReady = false;
 let isAppStarted = false;
 
+const SERVER_NAME = process.env.SERVER_NAME
+
+app.get('/api', (req, res) => {
+    res.status(200).send(`Server Name: ${SERVER_NAME}`);
+});
+
+
+
 setTimeout(() => {
     isAppStarted = true;
     console.log('Application started');
@@ -16,6 +24,7 @@ setTimeout(() => {
 }, 20000); // 20 секунд для готовности
 
 // Liveness Probe - проверка состояния "живо ли приложение"
+
 app.get('/healthz', (req, res) => {
     res.status(200).send('I am alive');
 });
